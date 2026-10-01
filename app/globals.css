@@ -68,7 +68,7 @@
   .surface-glow {
     box-shadow:
       0 0 0 1px rgba(255, 255, 255, 0.04),
-      0 0 80px -20px rgba(79, 86, 246, 0.12),
+      0 0 80px -20px rgba(249, 115, 22, 0.12),
       0 4px 24px -4px rgba(0, 0, 0, 0.5);
   }
 
@@ -101,8 +101,8 @@
     border-radius: 50%;
     background: radial-gradient(
       circle,
-      rgba(79, 86, 246, 0.15) 0%,
-      rgba(79, 86, 246, 0.05) 40%,
+      rgba(249, 115, 22, 0.15) 0%,
+      rgba(249, 115, 22, 0.05) 40%,
       transparent 70%
     );
     filter: blur(60px);
@@ -127,13 +127,13 @@
   }
 
   .connection-line {
-    stroke: rgba(79, 86, 246, 0.2);
+    stroke: rgba(249, 115, 22, 0.2);
     stroke-width: 1;
     fill: none;
   }
 
   .connection-line-active {
-    stroke: rgba(79, 86, 246, 0.5);
+    stroke: rgba(249, 115, 22, 0.5);
     stroke-width: 1.5;
     fill: none;
   }

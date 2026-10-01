@@ -6,7 +6,7 @@ export const siteConfig = {
   url: "https://risemind.ai",
   systemUrl: "https://app.risemind.ai",
   whatsapp: {
-    number: "5511999999999",
+    number: "5511994754350",
     message: "Olá! Quero conhecer a RiseMind AI.",
     get link() {
       return `https://wa.me/${this.number}?text=${encodeURIComponent(this.message)}`;
