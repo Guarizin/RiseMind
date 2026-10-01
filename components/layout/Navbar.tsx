@@ -11,6 +11,15 @@ export function Navbar() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) setIsMobileOpen(false);
+    };
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => desktop.removeEventListener("change", closeOnDesktop);
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 32);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -33,7 +42,9 @@ export function Navbar() {
       className={`
         fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out
         ${
-          isScrolled
+          isMobileOpen
+            ? "bg-surface-0"
+            : isScrolled
             ? "bg-surface-0/80 backdrop-blur-xl border-b border-line-1"
             : "bg-transparent"
         }
@@ -89,9 +100,10 @@ export function Navbar() {
           {/* Mobile Toggle */}
           <button
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className="relative z-50 lg:hidden p-2 -mr-2 text-txt-2 hover:text-txt-1 transition-colors"
+            className="relative z-50 lg:hidden min-w-11 min-h-11 flex items-center justify-center -mr-2 text-txt-2 hover:text-txt-1 transition-colors"
             aria-label={isMobileOpen ? "Fechar menu" : "Abrir menu"}
             aria-expanded={isMobileOpen}
+            aria-controls="mobile-menu"
           >
             {isMobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -100,8 +112,11 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       <div
+        id="mobile-menu"
+        hidden={!isMobileOpen}
+        aria-hidden={!isMobileOpen}
         className={`
-          fixed inset-0 z-40 lg:hidden transition-all duration-300 ease-out
+          fixed inset-0 h-dvh z-40 lg:hidden transition-all duration-300 ease-out
           ${isMobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
         `}
       >
@@ -111,7 +126,7 @@ export function Navbar() {
         />
         <div
           className={`
-            relative z-10 flex flex-col pt-24 pb-8 px-6 h-full
+            relative z-10 flex flex-col gap-8 pt-20 pb-8 px-6 h-full overflow-y-auto overscroll-contain
             transition-transform duration-300 ease-out
             ${isMobileOpen ? "translate-y-0" : "-translate-y-4"}
           `}

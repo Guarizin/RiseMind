@@ -24,7 +24,7 @@ const withSteps = [
 export function Comparison() {
   return (
     <section
-      className="relative py-28 lg:py-36 overflow-hidden"
+      className="relative py-16 sm:py-24 lg:py-36 overflow-hidden"
       aria-label="Comparação"
     >
       <div className="absolute inset-0 bg-surface-1/20" />

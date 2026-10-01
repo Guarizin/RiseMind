@@ -1,14 +1,15 @@
-import { type ReactNode, type ButtonHTMLAttributes } from "react";
+import { type ReactNode, type ButtonHTMLAttributes, type MouseEventHandler } from "react";
 
 type Variant = "primary" | "secondary" | "ghost" | "outline";
 type Size = "sm" | "md" | "lg";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "onClick"> {
   children: ReactNode;
   variant?: Variant;
   size?: Size;
   href?: string;
   className?: string;
+  onClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
 }
 
 const variants: Record<Variant, string> = {
@@ -25,7 +26,7 @@ const variants: Record<Variant, string> = {
 const sizes: Record<Size, string> = {
   sm: "h-9 px-4 text-body-sm gap-2",
   md: "h-11 px-6 text-body-sm gap-2",
-  lg: "h-12 px-8 text-body gap-2.5",
+  lg: "min-h-12 py-3 px-5 sm:px-8 text-body gap-2.5",
 };
 
 export function Button({
@@ -34,6 +35,7 @@ export function Button({
   size = "md",
   href,
   className = "",
+  onClick,
   ...props
 }: ButtonProps) {
   const classes = `
@@ -41,7 +43,7 @@ export function Button({
     transition-all duration-200 ease-out
     focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400
     disabled:opacity-50 disabled:pointer-events-none
-    whitespace-nowrap select-none
+    max-w-full text-center select-none
     ${variants[variant]}
     ${sizes[size]}
     ${className}
@@ -49,14 +51,14 @@ export function Button({
 
   if (href) {
     return (
-      <a href={href} className={classes} role="button">
+      <a href={href} className={classes} role="button" onClick={onClick}>
         {children}
       </a>
     );
   }
 
   return (
-    <button className={classes} {...props}>
+    <button className={classes} onClick={onClick} {...props}>
       {children}
     </button>
   );

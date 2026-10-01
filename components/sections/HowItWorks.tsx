@@ -38,7 +38,7 @@ export function HowItWorks() {
   return (
     <section
       id="como-funciona"
-      className="relative py-28 lg:py-36 overflow-hidden"
+      className="relative py-16 sm:py-24 lg:py-36 overflow-hidden"
       aria-label="Como funciona"
     >
       <div className="absolute inset-0 bg-surface-1/20" />

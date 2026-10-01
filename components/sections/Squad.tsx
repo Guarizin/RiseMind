@@ -22,7 +22,7 @@ export function Squad() {
   return (
     <section
       id="squad"
-      className="relative py-28 lg:py-36 overflow-hidden"
+      className="relative py-16 sm:py-24 lg:py-36 overflow-hidden"
       aria-label="Squad de agentes"
     >
       <div className="absolute inset-0">

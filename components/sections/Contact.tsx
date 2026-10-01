@@ -102,7 +102,7 @@ export function Contact() {
 
   const inputClass = (field: keyof FormData) => {
     const base =
-      "w-full bg-surface-2 border rounded-xl px-4 py-3 text-body-sm text-txt-1 placeholder:text-txt-3/60 outline-none transition-all duration-200";
+      "w-full min-w-0 bg-surface-2 border rounded-xl px-4 py-3 text-base sm:text-body-sm text-txt-1 placeholder:text-txt-3/60 outline-none transition-all duration-200";
     if (isFieldInvalid(field))
       return `${base} border-status-danger/40 focus:border-status-danger/60 focus:ring-1 focus:ring-status-danger/20`;
     if (isFieldValid(field))
@@ -113,7 +113,7 @@ export function Contact() {
   return (
     <section
       id="contato"
-      className="relative py-28 lg:py-36 overflow-hidden"
+      className="relative py-16 sm:py-24 lg:py-36 overflow-hidden"
       aria-label="Contato"
     >
       <div className="absolute inset-0 bg-surface-1/30" />

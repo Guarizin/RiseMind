@@ -17,7 +17,7 @@ export function Complexity() {
   return (
     <section
       id="complexidade"
-      className="relative py-28 lg:py-36 overflow-hidden"
+      className="relative py-16 sm:py-24 lg:py-36 overflow-hidden"
       aria-label="Complexidade operacional"
     >
       <div className="absolute inset-0">

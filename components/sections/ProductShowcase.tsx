@@ -42,7 +42,7 @@ const modules: ShowcaseModule[] = [
 export function ProductShowcase() {
   return (
     <section
-      className="relative py-28 lg:py-36 overflow-hidden"
+      className="relative py-16 sm:py-24 lg:py-36 overflow-hidden"
       aria-label="Produto"
     >
       <Container className="relative z-10">
@@ -64,7 +64,7 @@ export function ProductShowcase() {
                   }`}
                 >
                   {/* Text */}
-                  <div className="lg:w-5/12 text-center lg:text-left">
+                  <div className="w-full min-w-0 lg:w-5/12 text-center lg:text-left">
                     <h3 className="text-h3 text-txt-1 mb-4">{mod.title}</h3>
                     <p className="text-body text-txt-2 leading-relaxed">
                       {mod.description}
@@ -72,7 +72,7 @@ export function ProductShowcase() {
                   </div>
 
                   {/* Image */}
-                  <div className="lg:w-7/12">
+                  <div className="w-full min-w-0 lg:w-7/12">
                     <div className="surface-elevated overflow-hidden aspect-[16/10] relative group">
                       {/* Placeholder UI */}
                       <div className="absolute inset-0 bg-gradient-to-br from-surface-3/60 to-surface-2/30" />

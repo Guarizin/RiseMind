@@ -57,7 +57,7 @@ export function Autonomy() {
   return (
     <section
       id="controle"
-      className="relative py-28 lg:py-36 overflow-hidden"
+      className="relative py-16 sm:py-24 lg:py-36 overflow-hidden"
       aria-label="Autonomia controlada"
     >
       <div className="absolute inset-0 bg-surface-1/30" />
@@ -161,10 +161,10 @@ export function Autonomy() {
                     key={i}
                     className="px-5 lg:px-6 py-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 hover:bg-surface-3/20 transition-colors duration-200"
                   >
-                    <div className="flex items-center gap-3 flex-1 min-w-0">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-3 flex-1 min-w-0">
                       <StatusBadge level={item.level} label={item.levelLabel} />
                       <div className="min-w-0 flex-1">
-                        <p className="text-body-sm text-txt-1 font-medium truncate">
+                        <p className="text-body-sm text-txt-1 font-medium break-words">
                           {item.action}
                         </p>
                         <p className="text-caption text-txt-3">
@@ -172,7 +172,7 @@ export function Autonomy() {
                         </p>
                       </div>
                     </div>
-                    <span className="text-caption text-txt-3 whitespace-nowrap pl-10 sm:pl-0">
+                    <span className="text-caption text-txt-3 sm:whitespace-nowrap">
                       {item.state}
                     </span>
                   </div>

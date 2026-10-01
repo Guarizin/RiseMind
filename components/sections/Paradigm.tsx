@@ -25,7 +25,7 @@ const steps = [
 export function Paradigm() {
   return (
     <section
-      className="relative py-28 lg:py-40 overflow-hidden"
+      className="relative py-16 sm:py-24 lg:py-40 overflow-hidden"
       aria-label="Paradigma"
     >
       <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-line-2 to-transparent ml-[50%] hidden lg:block" />

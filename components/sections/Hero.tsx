@@ -27,7 +27,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section id="produto" className="relative min-h-screen flex items-center overflow-hidden noise-bg">
+    <section id="produto" className="relative min-h-svh flex items-center overflow-hidden noise-bg">
       <div className="absolute inset-0 grid-bg opacity-60" />
       <div className="hero-glow top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
 
@@ -51,8 +51,8 @@ export function Hero() {
               Agentes especializados trabalhando juntos para analisar, acompanhar e automatizar diferentes áreas da sua operação.
             </p>
             <div className={`mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-700 delay-300 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-              <Button variant="primary" size="lg" href="#contato">Solicitar demonstração</Button>
-              <Button variant="secondary" size="lg" href="#squad">Ver como funciona</Button>
+              <Button variant="primary" size="lg" href="#contato" className="w-full sm:w-auto">Solicitar demonstração</Button>
+              <Button variant="secondary" size="lg" href="#squad" className="w-full sm:w-auto">Ver como funciona</Button>
             </div>
             <p className={`mt-5 text-caption text-txt-3 transition-all duration-700 delay-[400ms] ${loaded ? "opacity-100" : "opacity-0"}`}>
               Automação com controle. Você decide até onde a IA pode agir.
@@ -93,25 +93,25 @@ export function Hero() {
 
             {/* Dashboard Placeholder */}
             <div className="relative max-w-5xl mx-auto">
-              <div className="surface-elevated overflow-hidden aspect-[16/9] lg:aspect-[16/8.5] relative">
+              <div className="surface-elevated overflow-hidden aspect-[4/3] sm:aspect-[16/9] lg:aspect-[16/8.5] relative">
                 <div className="absolute inset-0 bg-gradient-to-b from-surface-3/80 to-surface-1/40" />
                 <div className="absolute inset-0 grid-bg opacity-40" />
-                <div className="relative z-10 p-6 lg:p-10 h-full flex flex-col">
-                  <div className="flex items-center gap-3 mb-8">
+                <div className="relative z-10 p-4 sm:p-6 lg:p-10 h-full flex flex-col">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-8">
                     <div className="w-3 h-3 rounded-full bg-surface-4" />
                     <div className="w-3 h-3 rounded-full bg-surface-4" />
                     <div className="w-3 h-3 rounded-full bg-surface-4" />
-                    <div className="ml-4 h-3 w-40 bg-surface-4/50 rounded-full" />
+                    <div className="ml-2 sm:ml-4 h-3 w-24 sm:w-40 bg-surface-4/50 rounded-full" />
                   </div>
-                  <div className="flex-1 flex gap-6">
+                  <div className="flex-1 min-h-0 flex gap-3 sm:gap-6">
                     <div className="hidden md:flex flex-col gap-3 w-44">
                       {[...Array(6)].map((_, i) => (
                         <div key={i} className={`h-8 rounded-lg ${i === 0 ? "bg-brand-500/15 border border-brand-500/20" : "bg-surface-4/30"}`} />
                       ))}
                     </div>
-                    <div className="flex-1 flex flex-col gap-4">
-                      <div className="flex gap-4">
-                        {[...Array(3)].map((_, i) => <div key={i} className="flex-1 h-20 lg:h-24 rounded-xl bg-surface-4/20 border border-line-1" />)}
+                    <div className="flex-1 min-w-0 flex flex-col gap-3 sm:gap-4">
+                      <div className="flex gap-2 sm:gap-4">
+                        {[...Array(3)].map((_, i) => <div key={i} className="flex-1 h-12 sm:h-20 lg:h-24 rounded-xl bg-surface-4/20 border border-line-1" />)}
                       </div>
                       <div className="flex-1 rounded-xl bg-surface-4/15 border border-line-1" />
                     </div>

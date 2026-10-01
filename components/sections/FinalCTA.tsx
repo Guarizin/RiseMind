@@ -8,7 +8,7 @@ import { agents } from "@/config/agents";
 export function FinalCTA() {
   return (
     <section
-      className="relative py-28 lg:py-40 overflow-hidden"
+      className="relative py-16 sm:py-24 lg:py-40 overflow-hidden"
       aria-label="Chamada final"
     >
       {/* Background */}
@@ -32,16 +32,16 @@ export function FinalCTA() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-              <Button variant="primary" size="lg" href="#contato">
+              <Button variant="primary" size="lg" href="#contato" className="w-full sm:w-auto">
                 Solicitar demonstração
               </Button>
-              <Button variant="outline" size="lg" href="#contato">
+              <Button variant="outline" size="lg" href="#contato" className="w-full sm:w-auto">
                 Falar com a equipe
               </Button>
             </div>
 
             {/* Mini agent representation */}
-            <div className="flex items-center justify-center gap-3">
+            <div className="flex flex-wrap items-center justify-center gap-3">
               {agents.map((agent) => {
                 const Icon = agent.icon;
                 return (
