@@ -24,8 +24,8 @@ const flowSteps = [
 
 const actionQueue = [
   {
-    agent: "Anúncios",
-    action: "Atualizar descrição do anúncio #4821",
+    agent: "SAC",
+    action: "Responder dúvidas de clientes",
     level: "success" as const,
     levelLabel: "Automático",
     state: "Executado",
