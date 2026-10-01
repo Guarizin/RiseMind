@@ -5,7 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { siteConfig } from "@/config/site";
-import { MessageCircle, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { MessageCircle, AlertCircle } from "lucide-react";
 
 interface FormData {
   name: string;
@@ -16,7 +16,7 @@ interface FormData {
   message: string;
 }
 
-type FormStatus = "idle" | "loading" | "success" | "error";
+type FormStatus = "idle" | "error";
 
 const initialData: FormData = {
   name: "",
@@ -66,21 +66,35 @@ export function Contact() {
     data.name.trim() &&
     data.company.trim() &&
     data.whatsapp.trim() &&
-    isValidEmail(data.email) &&
-    status !== "loading";
+    isValidEmail(data.email);
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!canSubmit) return;
 
-    setStatus("loading");
-
-    // Simulated submission — replace with real integration
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      setStatus("success");
-      setData(initialData);
-      setTouched(new Set());
+      const volumeLabels: Record<string, string> = {
+        inicio: "Estou começando",
+        medio: "Operação média",
+        alto: "Alto volume",
+        enterprise: "Enterprise",
+      };
+      const message = [
+        "Olá, equipe RiseMind AI! 👋",
+        "Quero conversar sobre minha operação. Seguem meus dados:",
+        "",
+        `*Nome:* ${data.name.trim()}`,
+        `*Empresa:* ${data.company.trim()}`,
+        `*WhatsApp:* ${data.whatsapp.trim()}`,
+        `*E-mail:* ${data.email.trim()}`,
+        ...(data.volume ? [`*Volume da operação:* ${volumeLabels[data.volume]}`] : []),
+        ...(data.message.trim() ? ["", "*Sobre minha operação:*", data.message.trim()] : []),
+        "",
+        "Tenho interesse em conhecer a RiseMind AI e entender como vocês podem ajudar minha operação!",
+      ].join("\n");
+      window.location.assign(
+        `https://wa.me/${siteConfig.whatsapp.number}?text=${encodeURIComponent(message)}`
+      );
     } catch {
       setStatus("error");
     }
@@ -115,25 +129,6 @@ export function Contact() {
           </ScrollReveal>
 
           <ScrollReveal delay={100}>
-            {status === "success" ? (
-              <div className="surface-elevated p-10 text-center">
-                <div className="w-14 h-14 rounded-2xl bg-status-success/10 border border-status-success/20 flex items-center justify-center mx-auto mb-5">
-                  <CheckCircle2 size={28} className="text-status-success" />
-                </div>
-                <h3 className="text-h3 text-txt-1 mb-2">
-                  Mensagem enviada.
-                </h3>
-                <p className="text-body-sm text-txt-2">
-                  Entraremos em contato em breve para conversar sobre sua operação.
-                </p>
-                <button
-                  onClick={() => setStatus("idle")}
-                  className="mt-6 text-body-sm text-brand-400 hover:text-brand-300 transition-colors"
-                >
-                  Enviar outra mensagem
-                </button>
-              </div>
-            ) : (
               <form onSubmit={handleSubmit} noValidate className="space-y-5">
                 <div className="surface-elevated p-6 lg:p-8 space-y-5">
                   {/* Name */}
@@ -291,14 +286,8 @@ export function Contact() {
                   className="w-full"
                   disabled={!canSubmit}
                 >
-                  {status === "loading" ? (
-                    <>
-                      <Loader2 size={18} className="animate-spin" />
-                      Enviando...
-                    </>
-                  ) : (
-                    "Quero conhecer a RiseMind AI"
-                  )}
+                  <MessageCircle size={18} />
+                  Quero conhecer a RiseMind AI
                 </Button>
 
                 {/* WhatsApp alternative */}
@@ -317,7 +306,6 @@ export function Contact() {
                   </a>
                 </div>
               </form>
-            )}
           </ScrollReveal>
         </div>
       </Container>
