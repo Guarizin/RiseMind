@@ -91,12 +91,12 @@ export function Hero() {
               })}
             </div>
 
-            {/* Dashboard preview */}
+            {/* Abstract orchestration visual — not a product screen */}
             <div className="relative max-w-5xl mx-auto">
               <div className="surface-elevated overflow-hidden aspect-[4/3] sm:aspect-[16/9] lg:aspect-[16/8.5] relative">
                 <div className="absolute inset-0 bg-gradient-to-b from-surface-3/80 to-surface-1/40" />
                 <div className="absolute inset-0 grid-bg opacity-40" />
-                <div className="relative z-10 p-4 sm:p-6 lg:p-10 h-full flex flex-col">
+                <div className="relative z-10 p-4 sm:p-6 lg:p-10 h-full flex flex-col opacity-0 pointer-events-none" aria-hidden="true">
                   <div className="flex items-center justify-between gap-3 mb-4 sm:mb-7">
                     <div className="flex items-center gap-2 sm:gap-3">
                       <div className="flex gap-1.5">
@@ -170,7 +170,26 @@ export function Hero() {
                     </div>
                   </div>
                 </div>
-                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-surface-2 to-transparent" />
+                <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 sm:p-10">
+                  <p className="text-[0.6rem] sm:text-[0.7rem] uppercase tracking-[0.24em] text-brand-300/80">Inteligência em movimento</p>
+                  <p className="mt-2 text-xs sm:text-sm text-txt-2 text-center">Uma squad conectada, trabalhando em conjunto</p>
+                  <svg className="absolute inset-0 w-full h-full opacity-70" viewBox="0 0 1000 520" fill="none" aria-hidden="true">
+                    <path d="M120 125 C280 125 310 235 500 260 C690 285 730 125 880 125" className="connection-line-active" />
+                    <path d="M120 385 C285 385 325 285 500 260 C675 235 715 385 880 385" className="connection-line-active" />
+                    <path d="M120 125 C280 125 310 385 500 260 C690 135 730 385 880 385" className="connection-line" />
+                    <path d="M120 385 C280 385 310 125 500 260 C690 395 730 125 880 125" className="connection-line" />
+                  </svg>
+                  <div className="absolute left-[10%] top-[20%] rounded-xl border border-line-2 bg-surface-2/85 backdrop-blur-sm px-3 py-2 text-[0.6rem] text-txt-2">Dados da operação</div>
+                  <div className="absolute left-[10%] bottom-[20%] rounded-xl border border-line-2 bg-surface-2/85 backdrop-blur-sm px-3 py-2 text-[0.6rem] text-txt-2">Sinais do mercado</div>
+                  <div className="absolute right-[10%] top-[20%] rounded-xl border border-line-2 bg-surface-2/85 backdrop-blur-sm px-3 py-2 text-[0.6rem] text-txt-2">Decisões claras</div>
+                  <div className="absolute right-[10%] bottom-[20%] rounded-xl border border-line-2 bg-surface-2/85 backdrop-blur-sm px-3 py-2 text-[0.6rem] text-txt-2">Ações acompanhadas</div>
+                  <div className="relative z-10 grid place-items-center w-28 h-28 sm:w-36 sm:h-36 rounded-full border border-brand-400/40 bg-brand-500/10 shadow-[0_0_60px_rgba(249,115,22,0.2)]">
+                    <div className="absolute inset-2 rounded-full border border-brand-400/20 animate-pulse-slow" />
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-brand-500/20 border border-brand-400/50 grid place-items-center"><div className="w-4 h-4 rounded-full bg-brand-400 shadow-[0_0_18px_rgba(251,146,60,0.9)]" /></div>
+                  </div>
+                  <p className="relative z-10 mt-4 text-[0.65rem] sm:text-xs font-medium text-txt-1">RiseMind AI</p>
+                </div>
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-surface-2 to-transparent pointer-events-none z-30" />
               </div>
               <div className="absolute -inset-px rounded-2xl bg-gradient-to-b from-brand-500/10 via-transparent to-transparent pointer-events-none" />
             </div>
