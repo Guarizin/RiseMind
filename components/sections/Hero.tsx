@@ -173,11 +173,22 @@ export function Hero() {
                 <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 sm:p-10">
                   <p className="text-[0.6rem] sm:text-[0.7rem] uppercase tracking-[0.24em] text-brand-300/80">Inteligência em movimento</p>
                   <p className="mt-2 text-xs sm:text-sm text-txt-2 text-center">Uma squad conectada, trabalhando em conjunto</p>
+                  <div className="relative z-10 mt-4 flex max-w-[290px] sm:max-w-none flex-wrap justify-center gap-1.5 sm:gap-2">
+                    {["Agentes especializados", "Visão centralizada", "Decisões assistidas", "Automação com controle"].map((quality) => (
+                      <span key={quality} className="rounded-full border border-brand-500/20 bg-brand-500/5 px-2 py-1 text-[0.5rem] sm:text-[0.6rem] text-brand-200/80">
+                        {quality}
+                      </span>
+                    ))}
+                  </div>
                   <svg className="absolute inset-0 w-full h-full opacity-70" viewBox="0 0 1000 520" fill="none" aria-hidden="true">
                     <path d="M120 125 C280 125 310 235 500 260 C690 285 730 125 880 125" className="connection-line-active" />
                     <path d="M120 385 C285 385 325 285 500 260 C675 235 715 385 880 385" className="connection-line-active" />
                     <path d="M120 125 C280 125 310 385 500 260 C690 135 730 385 880 385" className="connection-line" />
                     <path d="M120 385 C280 385 310 125 500 260 C690 395 730 125 880 125" className="connection-line" />
+                    <path d="M120 125 C285 185 340 155 500 260 C660 365 720 325 880 385" className="connection-line" />
+                    <path d="M120 385 C285 325 340 365 500 260 C660 155 720 185 880 125" className="connection-line" />
+                    <path d="M120 125 C300 225 320 300 500 260 C680 220 700 295 880 385" className="connection-line" />
+                    <path d="M120 385 C300 295 320 220 500 260 C680 300 700 225 880 125" className="connection-line" />
                   </svg>
                   <div className="absolute left-[10%] top-[20%] rounded-xl border border-line-2 bg-surface-2/85 backdrop-blur-sm px-3 py-2 text-[0.6rem] text-txt-2">Dados da operação</div>
                   <div className="absolute left-[10%] bottom-[20%] rounded-xl border border-line-2 bg-surface-2/85 backdrop-blur-sm px-3 py-2 text-[0.6rem] text-txt-2">Sinais do mercado</div>
