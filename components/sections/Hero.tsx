@@ -173,13 +173,6 @@ export function Hero() {
                 <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 sm:p-10">
                   <p className="text-[0.6rem] sm:text-[0.7rem] uppercase tracking-[0.24em] text-brand-300/80">Inteligência em movimento</p>
                   <p className="mt-2 text-xs sm:text-sm text-txt-2 text-center">Uma squad conectada, trabalhando em conjunto</p>
-                  <div className="relative z-10 mt-4 flex max-w-[290px] sm:max-w-none flex-wrap justify-center gap-1.5 sm:gap-2">
-                    {["Agentes especializados", "Visão centralizada", "Decisões assistidas", "Automação com controle"].map((quality) => (
-                      <span key={quality} className="rounded-full border border-brand-500/20 bg-brand-500/5 px-2 py-1 text-[0.5rem] sm:text-[0.6rem] text-brand-200/80">
-                        {quality}
-                      </span>
-                    ))}
-                  </div>
                   <svg className="absolute inset-0 w-full h-full opacity-70" viewBox="0 0 1000 520" fill="none" aria-hidden="true">
                     <path d="M120 125 C280 125 310 235 500 260 C690 285 730 125 880 125" className="connection-line-active" />
                     <path d="M120 385 C285 385 325 285 500 260 C675 235 715 385 880 385" className="connection-line-active" />
@@ -189,11 +182,19 @@ export function Hero() {
                     <path d="M120 385 C285 325 340 365 500 260 C660 155 720 185 880 125" className="connection-line" />
                     <path d="M120 125 C300 225 320 300 500 260 C680 220 700 295 880 385" className="connection-line" />
                     <path d="M120 385 C300 295 320 220 500 260 C680 300 700 225 880 125" className="connection-line" />
+                    <path d="M305 230 C380 230 420 248 500 260" className="connection-line-active" />
+                    <path d="M695 230 C620 230 580 248 500 260" className="connection-line-active" />
+                    <path d="M340 365 C400 330 440 292 500 260" className="connection-line-active" />
+                    <path d="M660 365 C600 330 560 292 500 260" className="connection-line-active" />
                   </svg>
                   <div className="absolute left-[10%] top-[20%] rounded-xl border border-line-2 bg-surface-2/85 backdrop-blur-sm px-3 py-2 text-[0.6rem] text-txt-2">Dados da operação</div>
                   <div className="absolute left-[10%] bottom-[20%] rounded-xl border border-line-2 bg-surface-2/85 backdrop-blur-sm px-3 py-2 text-[0.6rem] text-txt-2">Sinais do mercado</div>
                   <div className="absolute right-[10%] top-[20%] rounded-xl border border-line-2 bg-surface-2/85 backdrop-blur-sm px-3 py-2 text-[0.6rem] text-txt-2">Decisões claras</div>
                   <div className="absolute right-[10%] bottom-[20%] rounded-xl border border-line-2 bg-surface-2/85 backdrop-blur-sm px-3 py-2 text-[0.6rem] text-txt-2">Ações acompanhadas</div>
+                  <span className="absolute z-10 left-[22%] top-[42%] rounded-full border border-brand-500/30 bg-surface-2/90 px-2 py-1 text-[0.48rem] sm:px-3 sm:py-1.5 sm:text-[0.6rem] text-brand-200/90">Agentes especializados</span>
+                  <span className="absolute z-10 right-[22%] top-[42%] rounded-full border border-brand-500/30 bg-surface-2/90 px-2 py-1 text-[0.48rem] sm:px-3 sm:py-1.5 sm:text-[0.6rem] text-brand-200/90">Visão centralizada</span>
+                  <span className="absolute z-10 left-[25%] bottom-[23%] rounded-full border border-brand-500/30 bg-surface-2/90 px-2 py-1 text-[0.48rem] sm:px-3 sm:py-1.5 sm:text-[0.6rem] text-brand-200/90">Decisões assistidas</span>
+                  <span className="absolute z-10 right-[22%] bottom-[23%] rounded-full border border-brand-500/30 bg-surface-2/90 px-2 py-1 text-[0.48rem] sm:px-3 sm:py-1.5 sm:text-[0.6rem] text-brand-200/90">Automação com controle</span>
                   <div className="relative z-10 grid place-items-center w-28 h-28 sm:w-36 sm:h-36 rounded-full border border-brand-400/40 bg-brand-500/10 shadow-[0_0_60px_rgba(249,115,22,0.2)]">
                     <div className="absolute inset-2 rounded-full border border-brand-400/20 animate-pulse-slow" />
                     <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-brand-500/20 border border-brand-400/50 grid place-items-center"><div className="w-4 h-4 rounded-full bg-brand-400 shadow-[0_0_18px_rgba(251,146,60,0.9)]" /></div>
