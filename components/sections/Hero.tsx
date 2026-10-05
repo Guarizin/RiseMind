@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { agents } from "@/config/agents";
-import { ChevronDown } from "lucide-react";
+import { Bell, ChevronDown, MoreHorizontal, TrendingUp } from "lucide-react";
 
 const heroModules = [
   // Lado Esquerdo (3 agentes)
@@ -91,29 +91,82 @@ export function Hero() {
               })}
             </div>
 
-            {/* Dashboard Placeholder */}
+            {/* Dashboard preview */}
             <div className="relative max-w-5xl mx-auto">
               <div className="surface-elevated overflow-hidden aspect-[4/3] sm:aspect-[16/9] lg:aspect-[16/8.5] relative">
                 <div className="absolute inset-0 bg-gradient-to-b from-surface-3/80 to-surface-1/40" />
                 <div className="absolute inset-0 grid-bg opacity-40" />
                 <div className="relative z-10 p-4 sm:p-6 lg:p-10 h-full flex flex-col">
-                  <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-8">
-                    <div className="w-3 h-3 rounded-full bg-surface-4" />
-                    <div className="w-3 h-3 rounded-full bg-surface-4" />
-                    <div className="w-3 h-3 rounded-full bg-surface-4" />
-                    <div className="ml-2 sm:ml-4 h-3 w-24 sm:w-40 bg-surface-4/50 rounded-full" />
+                  <div className="flex items-center justify-between gap-3 mb-4 sm:mb-7">
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <div className="flex gap-1.5">
+                        <div className="w-2 h-2 rounded-full bg-brand-400/80" />
+                        <div className="w-2 h-2 rounded-full bg-surface-4" />
+                        <div className="w-2 h-2 rounded-full bg-surface-4" />
+                      </div>
+                      <span className="hidden sm:block h-4 w-px bg-line-2" />
+                      <p className="text-[0.6rem] sm:text-[0.7rem] font-medium tracking-wide text-txt-2">Visão geral da operação</p>
+                    </div>
+                    <div className="flex items-center gap-2 text-txt-3">
+                      <span className="hidden sm:inline text-[0.65rem]">Últimos 30 dias</span>
+                      <Bell size={13} />
+                    </div>
                   </div>
                   <div className="flex-1 min-h-0 flex gap-3 sm:gap-6">
-                    <div className="hidden md:flex flex-col gap-3 w-44">
-                      {[...Array(6)].map((_, i) => (
-                        <div key={i} className={`h-8 rounded-lg ${i === 0 ? "bg-brand-500/15 border border-brand-500/20" : "bg-surface-4/30"}`} />
+                    <aside className="hidden md:flex flex-col gap-2 w-36 lg:w-40 border-r border-line-1 pr-4">
+                      <p className="text-[0.58rem] uppercase tracking-[0.15em] text-txt-3 px-2 mb-1">Workspace</p>
+                      {[
+                        ["Resumo", true], ["Vendas", false], ["Atendimento", false], ["Campanhas", false], ["Catálogo", false],
+                      ].map(([label, active]) => (
+                        <div key={label as string} className={`h-8 px-2 rounded-lg flex items-center text-[0.65rem] ${active ? "bg-brand-500/15 text-brand-300 border border-brand-500/20" : "text-txt-3"}`}>
+                          <span className={`mr-2 w-1.5 h-1.5 rounded-full ${active ? "bg-brand-400" : "bg-surface-4"}`} />
+                          {label as string}
+                        </div>
                       ))}
-                    </div>
-                    <div className="flex-1 min-w-0 flex flex-col gap-3 sm:gap-4">
-                      <div className="flex gap-2 sm:gap-4">
-                        {[...Array(3)].map((_, i) => <div key={i} className="flex-1 h-12 sm:h-20 lg:h-24 rounded-xl bg-surface-4/20 border border-line-1" />)}
+                      <div className="mt-auto rounded-lg border border-brand-500/15 bg-brand-500/5 p-2.5">
+                        <p className="text-[0.58rem] text-brand-300">6 agentes ativos</p>
+                        <p className="text-[0.55rem] text-txt-3 mt-1">Tudo sob controle</p>
                       </div>
-                      <div className="flex-1 rounded-xl bg-surface-4/15 border border-line-1" />
+                    </aside>
+                    <div className="flex-1 min-w-0 flex flex-col gap-3 sm:gap-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-[0.58rem] sm:text-[0.65rem] uppercase tracking-[0.14em] text-txt-3">Performance</p>
+                          <p className="text-[0.8rem] sm:text-sm font-semibold text-txt-1 mt-0.5">Bom dia, equipe</p>
+                        </div>
+                        <button className="w-7 h-7 rounded-lg border border-line-1 grid place-items-center text-txt-3" aria-label="Mais opções"><MoreHorizontal size={14} /></button>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2 sm:gap-4">
+                        {[
+                          ["Faturamento", "R$ 48,2k", "+12,4%"],
+                          ["Pedidos", "1.284", "+8,2%"],
+                          ["Conversão", "4,86%", "+0,6%"],
+                        ].map(([label, value, change]) => (
+                          <div key={label} className="rounded-xl bg-surface-4/20 border border-line-1 p-2.5 sm:p-4">
+                            <p className="text-[0.52rem] sm:text-[0.62rem] text-txt-3 truncate">{label}</p>
+                            <p className="text-[0.75rem] sm:text-base font-semibold text-txt-1 mt-1 truncate">{value}</p>
+                            <p className="hidden sm:flex items-center gap-1 text-[0.6rem] text-status-success mt-1"><TrendingUp size={10} />{change}</p>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="flex-1 min-h-0 grid grid-cols-5 gap-3 sm:gap-4">
+                        <div className="col-span-3 rounded-xl bg-surface-4/15 border border-line-1 p-3 sm:p-4 flex flex-col min-h-0">
+                          <div className="flex items-center justify-between">
+                            <div><p className="text-[0.65rem] font-medium text-txt-2">Evolução de vendas</p><p className="text-[0.55rem] text-txt-3 mt-0.5">Receita diária</p></div>
+                            <span className="text-[0.58rem] text-brand-300">Este mês</span>
+                          </div>
+                          <div className="flex-1 min-h-[62px] mt-3 relative flex items-end gap-1.5 sm:gap-2">
+                            {[32, 46, 38, 58, 49, 72, 62, 85, 76, 92, 80, 100].map((height, i) => <div key={i} className="flex-1 rounded-t-sm bg-gradient-to-t from-brand-600/30 to-brand-400/90" style={{ height: `${height}%` }} />)}
+                            <div className="absolute inset-x-0 top-[35%] border-t border-dashed border-brand-400/30" />
+                          </div>
+                        </div>
+                        <div className="col-span-2 rounded-xl bg-surface-4/15 border border-line-1 p-3 sm:p-4 hidden sm:block">
+                          <p className="text-[0.65rem] font-medium text-txt-2">Ações da IA</p>
+                          <div className="mt-3 space-y-3">
+                            {["3 campanhas otimizadas", "12 tickets priorizados", "4 anúncios revisados"].map((item, i) => <div key={item} className="flex gap-2"><span className={`mt-1 w-1.5 h-1.5 rounded-full flex-none ${i === 1 ? "bg-status-warning" : "bg-status-success"}`} /><p className="text-[0.56rem] leading-relaxed text-txt-3">{item}</p></div>)}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
