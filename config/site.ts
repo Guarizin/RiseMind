@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "RiseMind AI",
-  title: "RiseMind AI | AI Ops para Mercado Livre",
+  title: "RiseMind AI",
   description:
     "Uma Squad de Inteligência Artificial para analisar, acompanhar e automatizar diferentes áreas da sua operação no Mercado Livre.",
   url: "https://risemind.ai",
