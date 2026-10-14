@@ -258,21 +258,6 @@ export function Contact() {
                   Conversar pelo WhatsApp
                 </Button>
 
-                {/* WhatsApp alternative */}
-                <div className="text-center">
-                  <p className="text-caption text-txt-3 mb-3">
-                    Prefere falar direto?
-                  </p>
-                  <a
-                    href={siteConfig.whatsapp.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-body-sm text-txt-2 hover:text-txt-1 transition-colors duration-200"
-                  >
-                    <MessageCircle size={16} />
-                    WhatsApp
-                  </a>
-                </div>
               </form>
           </ScrollReveal>
         </div>
