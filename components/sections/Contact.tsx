@@ -11,7 +11,6 @@ interface FormData {
   name: string;
   company: string;
   whatsapp: string;
-  email: string;
   volume: string;
   message: string;
 }
@@ -22,7 +21,6 @@ const initialData: FormData = {
   name: "",
   company: "",
   whatsapp: "",
-  email: "",
   volume: "",
   message: "",
 };
@@ -42,31 +40,25 @@ export function Contact() {
     setTouched((prev) => new Set(prev).add(e.target.name));
   };
 
-  const isValidEmail = (email: string) =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
   const isRequired = (field: keyof FormData) =>
-    ["name", "company", "whatsapp", "email"].includes(field);
+    ["name", "company", "whatsapp"].includes(field);
 
   const isFieldInvalid = (field: keyof FormData) => {
     if (!touched.has(field)) return false;
     if (isRequired(field) && !data[field].trim()) return true;
-    if (field === "email" && data.email && !isValidEmail(data.email)) return true;
     return false;
   };
 
   const isFieldValid = (field: keyof FormData) => {
     if (!touched.has(field)) return false;
     if (isRequired(field) && !data[field].trim()) return false;
-    if (field === "email") return isValidEmail(data.email);
     return true;
   };
 
   const canSubmit =
     data.name.trim() &&
     data.company.trim() &&
-    data.whatsapp.trim() &&
-    isValidEmail(data.email);
+    data.whatsapp.trim();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -85,16 +77,14 @@ export function Contact() {
         "",
         `*Nome:* ${data.name.trim()}`,
         `*Empresa:* ${data.company.trim()}`,
-        `*WhatsApp:* ${data.whatsapp.trim()}`,
-        `*E-mail:* ${data.email.trim()}`,
+        `*Meu WhatsApp:* ${data.whatsapp.trim()}`,
         ...(data.volume ? [`*Volume da operação:* ${volumeLabels[data.volume]}`] : []),
         ...(data.message.trim() ? ["", "*Sobre minha operação:*", data.message.trim()] : []),
         "",
-        "Tenho interesse em conhecer a RiseMind AI e entender como vocês podem ajudar minha operação!",
+        "Tenho interesse e quero conhecer melhor a RiseMind AI.",
       ].join("\n");
-      window.location.assign(
-        `https://wa.me/${siteConfig.whatsapp.number}?text=${encodeURIComponent(message)}`
-      );
+      const whatsappUrl = `https://wa.me/${siteConfig.whatsapp.number}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     } catch {
       setStatus("error");
     }
@@ -175,48 +165,26 @@ export function Contact() {
                     />
                   </div>
 
-                  {/* WhatsApp + Email row */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label
-                        htmlFor="whatsapp"
-                        className="block text-body-sm font-medium text-txt-1 mb-2"
-                      >
-                        WhatsApp <span className="text-brand-400">*</span>
-                      </label>
-                      <input
-                        type="tel"
-                        id="whatsapp"
-                        name="whatsapp"
-                        required
-                        autoComplete="tel"
-                        value={data.whatsapp}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        className={inputClass("whatsapp")}
-                        placeholder="(00) 00000-0000"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-body-sm font-medium text-txt-1 mb-2"
-                      >
-                        E-mail <span className="text-brand-400">*</span>
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        autoComplete="email"
-                        value={data.email}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        className={inputClass("email")}
-                        placeholder="seu@email.com"
-                      />
-                    </div>
+                  {/* WhatsApp */}
+                  <div>
+                    <label
+                      htmlFor="whatsapp"
+                      className="block text-body-sm font-medium text-txt-1 mb-2"
+                    >
+                      WhatsApp <span className="text-brand-400">*</span>
+                    </label>
+                    <input
+                      type="tel"
+                      id="whatsapp"
+                      name="whatsapp"
+                      required
+                      autoComplete="tel"
+                      value={data.whatsapp}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={inputClass("whatsapp")}
+                      placeholder="(00) 00000-0000"
+                    />
                   </div>
 
                   {/* Volume */}
@@ -287,7 +255,7 @@ export function Contact() {
                   disabled={!canSubmit}
                 >
                   <MessageCircle size={18} />
-                  Quero conhecer a RiseMind AI
+                  Conversar pelo WhatsApp
                 </Button>
 
                 {/* WhatsApp alternative */}
