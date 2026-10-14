@@ -67,17 +67,6 @@ export function Footer() {
             © {new Date().getFullYear()} RiseMind AI. Todos os direitos reservados.
           </p>
           <div className="flex items-center gap-4">
-            {siteConfig.social.linkedin && (
-              <a
-                href={siteConfig.social.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-txt-3 hover:text-txt-1 transition-colors text-caption"
-                aria-label="LinkedIn"
-              >
-                LinkedIn
-              </a>
-            )}
             {siteConfig.social.instagram && (
               <a
                 href={siteConfig.social.instagram}

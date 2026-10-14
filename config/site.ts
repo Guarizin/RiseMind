@@ -15,7 +15,6 @@ export const siteConfig = {
   email: "contato@risemind.ai",
   social: {
     instagram: "https://instagram.com/risemindai",
-    linkedin: "https://linkedin.com/company/risemindai",
   },
   og: {
     image: "/og-image.jpg",
